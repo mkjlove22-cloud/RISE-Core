@@ -16,6 +16,7 @@
 Sparse undirected graph: 
 Neighbors of node i:   N_i  (|N_i| ≈ d)
 Base coupling K0[i][j] ≥ 0 (if j ∉ N_i → 0)
+
 3. Global Indicators
 3.1 Order Parameter r(t)
 r(t) = | (1/N) * Σ_j exp(i * theta_j(t)) |
