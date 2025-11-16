@@ -3,11 +3,14 @@
 시간 t = 0,1,2,...,Tmax
 노드 i = 1,…,N 에 대해 다음 상태를 갖는다:
 
-1. Phase (P1/P2) theta_i(t) ∈ [0, 2π)
+1. Phase (P1/P2)
+   theta_i(t) ∈ [0, 2π)
+
 2. Natural Frequency omega_i(t) ∈ R
-3. Resource R_i(t) ≥ 0
-4. Emotion / Energy E_i(t) ∈ [-1, 1]
-5. Meaning Weight (P4) W_i(t) ∈ [W_min, W_max],   with 0 < W_min < W_max ≤ 1
+
+4. Resource R_i(t) ≥ 0
+5. Emotion / Energy E_i(t) ∈ [-1, 1]
+6. Meaning Weight (P4) W_i(t) ∈ [W_min, W_max],   with 0 < W_min < W_max ≤ 1
 2. Network Structure
 
 Sparse undirected graph: 
