@@ -89,26 +89,36 @@ Includes both C-core and HTML/JS visual simulator
 
 C 기반 코어 엔진 + HTML/JS 시각화 시뮬레이터 제공
 
-4. 🧩 Project Structure (프로젝트 구조)
+4. 🧩 프로젝트 구조 (Project Structure)
+RISE-Core 프로젝트는 세 가지 주요 구성 요소(C 코어, 웹 시뮬레이터, 문서)로 나뉘어 있습니다.
+
 RISE-Core/
-│
-├── c/                     # C core engine skeleton
-│   ├── main.c
-│   ├── rise_core.c
-│   └── utils.c
-│
-├── include/
-│   └── rise_core.h
-│
-├── html/                  # Browser-based simulator
-│   ├── index.html
-│   ├── rise_sim.js
-│   └── style.css
-│
-├── math/
-│   └── definitions.md     # Formal definitions (Ξ, r, Wc, Gini, Alpha)
-│
-└── README.md
+
+c/ (C 코어 엔진 스켈레톤)
+
+main.c
+
+rise_core.c
+
+utils.c
+
+include/
+
+rise_core.h
+
+html/ (브라우저 기반 시뮬레이터)
+
+index.html
+
+rise_sim.js
+
+style.css
+
+math/
+
+definitions.md (공식 정의: Ξ, r, Wc, Gini, Alpha)
+
+README.md
 
 5. 🧪 How to Run (사용 방법)
 5.1 C Core Engine
