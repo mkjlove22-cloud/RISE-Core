@@ -18,7 +18,7 @@ RISE-Core는 Kuramoto 기반 위상 동기화 모델 위에 4개의 동역학 �
 📁 1. System Layers / 시스템 계층 구조
 
 RISE-Core는 다음 4개 Layer가 서로 연결되어 있는 multi-layer dynamical architecture이다.
-<per>
+<pre>
 ┌───────────────────────────────┐
 │           P1 Layer            │  Resonance & Coupling Control
 └───────────────────────────────┘
@@ -31,7 +31,7 @@ RISE-Core는 다음 4개 Layer가 서로 연결되어 있는 multi-layer dynamic
 ┌───────────────────────────────┐
 │           P4 Layer            │  Meaning Stability & Attack Modeling
 └───────────────────────────────┘
-</per>
+</pre>
 각 Layer는 독립된 로직을 갖지만 다음과 같이 교차 참조한다:
 
 P1은 r(t) 공명을 계산하고 전체 coupling을 조절
@@ -44,7 +44,7 @@ P4는 의미 붕괴/회복을 제어하며 모든 Layer에 간접 영향
 🏗 2. Module Map / 모듈 구조
 
 RISE-Core 코드/수학 모델은 다음 모듈로 분리된다:
-<per>
+<pre>
 rise_core/
 │
 ├── core_state/      # 모든 상태 변수 (theta, omega, R, E, W)
@@ -57,11 +57,11 @@ rise_core/
 ├── metrics/         # r(t), G(t), W_avg, E_avg, Xi(t)
 │
 └── simulation/      # Time-step integrator (Euler), main loop
-</per>
+</pre>
 🧩 3. Data Flow Architecture / 데이터 흐름 구조
 
 각 time-step t에서 시스템은 다음 순서로 계산된다:
-<per>
+<pre>
 1) Compute Metrics
    r(t), W_avg(t), E_avg(t), G(t)
 
@@ -91,7 +91,7 @@ rise_core/
 
 8) Objective Function
    Xi(t) 계산
-<per>
+</pre>
 이 구조는 다음 철학을 반영한다:
 
 공명(P1) → 항상성(P2) → 자원(P3) → 의미(P4)
@@ -101,7 +101,7 @@ rise_core/
 4.1 State Component
 
 저장되는 상태:
-<per>
+<pre>
 theta[N]
 omega[N]
 R[N]
@@ -112,7 +112,7 @@ W[N]
 <per>
 K0[N][N]
 neighbors[N]
-</per>
+</pre>
 4.2 P1 Component (Resonance Filtering)
 
 핵심 역할:
@@ -188,13 +188,13 @@ docs/rise_core_sim.js
 📊 6. Metrics System
 
 계산되는 지표:
-<per>
+<pre>
 r(t)   — coherence
 W_avg  — meaning strength
 E_avg  — emotional load
 G      — inequality
 Xi     — resilience/health score
-</per>
+</pre>
 이들의 조합이 전체 시스템의:
 
 질서 수준
@@ -208,7 +208,7 @@ Xi     — resilience/health score
 을 결정한다.
 
 🧪 7. Attack–Recovery Pipeline
-<per>
+<pre>
 Attack Window
     ↓
 Meaning Collapse (W ↓)
@@ -220,11 +220,11 @@ Redistribution / Repair / Homeostasis
 Recovery Window
     ↓
 Xi_rec 계산 → PASS/FAIL
-</per>
+</pre>
 RISE-Core는 공격을 통한 복원 측정을 설계 철학으로 삼는다.
 
 🧱 8. High-Level Architecture Diagram
-<per>
+<pre>
                   ┌──────────────┐
                   │   Metrics     │
                   └──────┬───────┘
@@ -253,7 +253,7 @@ RISE-Core는 공격을 통한 복원 측정을 설계 철학으로 삼는다.
                   │ Simulation    │
                   │  Core Loop    │
                   └───────────────┘
-</per>
+</pre>
 🪄 9. Human–AI Design Model
 
 Human → conceptual design, principles, philosophical architecture
