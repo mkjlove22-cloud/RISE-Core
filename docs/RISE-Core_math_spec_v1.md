@@ -49,7 +49,6 @@ $$
 $$
 \bar{\Xi}_{\mathrm{rec}} = \frac{1}{T_{\mathrm{rec, end}} - T_{\mathrm{rec, start}}} \sum_{t=T_{\mathrm{rec, start}}}^{T_{\mathrm{rec, end}}} \Xi(t) \geq \Xi_{\mathrm{crit}}
 $$
-($\Xi_{\mathrm{crit}}$는 보통 0.40과 같은 임계값으로 설정됨)
 
 \section{P1 --- 공명 계층 (Kuramoto Dynamics)}
 
@@ -60,11 +59,6 @@ $$
 $$
 \frac{d\theta_i}{dt} = \omega_i(t) + \sum_{j \in \mathcal{N}(i)} K_{ij}(t) \sin(\theta_j(t) - \theta_i(t)) + \eta_i(t)
 $$
-\begin{itemize}
-    \item $\mathcal{N}(i)$: 노드 $i$의 이웃(neighbor) 집합
-    \item $K_{ij}(t)$: 시간에 따라 달라지는 결합 강도 (coupling strength)
-    \item $\eta_i(t)$: 작은 노이즈 항 (random noise)
-\end{itemize}
 공명 지표 $r(t)$는 표준 Kuramoto order parameter로 정의됩니다.
 $$
 r(t) = \frac{1}{N} \left| \sum_{j=1}^{N} e^{i\theta_j(t)} \right| \in [0, 1]
@@ -74,16 +68,11 @@ $$
 $$
 K_{ij}(t) = \alpha(t) \cdot K_{ij}^{(0)} \cdot F_j(t)
 $$
-\begin{itemize}
-    \item $\alpha(t)$: 동조도에 따라 증폭되는 동적 증폭 계수 (P2-Adaptive Homeostasis 참조)
-    \item $K_{ij}^{(0)}$: 기본 결합 행렬 (initial coupling matrix)
-    \item $F_j(t)$: P4 필터 (노드 $j$의 의미 가중치 기반 필터)
-\end{itemize}
 
 \section{P2 --- 적응적 항상성 (Adaptive Homeostasis)}
 
 \subsection{Dynamic Alpha (직접 커플링 증폭)}
-동조도 $r(t)$가 임계값 $r_{\mathrm{crit}}$ 아래로 떨어지면, 시스템은 자기 조절을 통해 복원력을 키웁니다. 동조도에 따른 증폭 계수 $\alpha(t)$를 정의합니다.
+동조도 $r(t)$가 임계값 $r_{\mathrm{crit}}$ 아래로 떨어지면, 시스템은 자기 조절을 통해 복원력을 키웁니다.
 $$
 \alpha(t) = 
 \begin{cases}
@@ -91,10 +80,6 @@ $$
     1 + \mu(r_{\mathrm{crit}} - r(t))^{\gamma}, & r(t) < r_{\mathrm{crit}}
 \end{cases}
 $$
-\begin{itemize}
-    \item $\mu > 0$: 증폭 강도
-    \item $\gamma \geq 1$: 비선형 강도
-\end{itemize}
 
 \section{P3 --- 자원 공정성 (Resource Fairness)}
 
@@ -106,15 +91,51 @@ $G(t)$가 임계값 $G_{\mathrm{th}}$ 이상인 경우, 상위/하위 $\rho_{\ma
 
 \section{P4 --- 의미 안정성 (Meaning Stability)}
 
-각 노드 또는 개념 단위의 \textbf{의미 핵심 가중치} $W_{C, i}(t)$는 감정 $E_i(t)$와 공명 $r(t)$에 따라 다음과 같이 진화합니다.
-
+각 노드 또는 개념 단위의 \textbf{의미 핵심 가중치} $W_{C, i}(t)$의 진화 방정식은 다음과 같습니다.
 $$
 \frac{dW_{C, i}}{dt} = \eta_W \cdot r(t) \cdot (1 - W_{C, i}) - \nu_W(t) \cdot (1 - W_{C, i}) + \lambda_W \cdot (1 - W_{C, i})
 $$
+여기서, $F_i(t)$는 $W_{C, i}(t)$를 기반으로 한 이진 필터입니다.
+$$
+F_i(t) = \begin{cases} 1, & W_{C, i}(t) \geq \tau_W \\ 0, & W_{C, i}(t) < \tau_W \end{cases}
+$$
+
+\section{P5 --- 감정 관리 (Emotion Management) \textbf{[NEW]}}
+각 노드의 감정/노력 수준 $E_i(t)$는 자원 ($R_i$)과 의미 가중치 ($W_{C, i}$)에 비선형적으로 영향을 받으며, 다음 방정식에 따라 변화합니다.
+
+$$
+\frac{dE_i}{dt} = -\delta_E E_i + \gamma_E \left( \tanh(\beta_R R_i + \beta_W W_{C, i}) - E_i \right) + \eta_E(t)
+$$
 \begin{itemize}
-    \item $\eta_W$: 공명에 기반한 회복 속도 (Resonance-based recovery rate)
-    \item $\nu_W(t)$: 외부 공격(Attack) 또는 내부 부패(Decay)에 의한 의미 손실율
-    \item $\lambda_W$: 자율 복구율 (Autonomous repair rate)
+    \item $\delta_E$: 기본 감정 소멸률 (Base decay rate of emotion)
+    \item $\gamma_E$: 감정 조정 속도 (Emotion adjustment speed)
+    \item $\beta_R, \beta_W$: $R_i$와 $W_{C, i}$가 $E_i$에 미치는 민감도 계수 (Sensitivity coefficients)
+    \item $\eta_E(t)$: 감정 노이즈/외란 항 (Noise/perturbation term)
 \end{itemize}
+
+\section{P6 --- 복원력 정량화 (Resilience Quantification) \textbf{[NEW]}}
+
+RISE-Core 프레임워크는 시스템이 외부 공격 $A(t)$에 노출된 경우의 복원력을 다음 지표로 정량화합니다. 공격 $A(t)$는 일반적으로 $\nu_W(t)$와 $\nu_E(t)$의 형태로 시스템에 도입됩니다.
+
+\subsection{상태 변이 영역}
+RISE 시스템은 다음 세 가지 영역으로 구분됩니다:
+\begin{itemize}
+    \item $\mathcal{D}_0$: 안정 영역 (Normal Operation)
+    \item $\mathcal{D}_{\mathrm{atk}}$: 공격 영역 (Attack Period)
+    \item $\mathcal{D}_{\mathrm{rec}}$: 복원 영역 (Recovery Period)
+\end{itemize}
+
+\subsection{복원 시간 (Recovery Time)}
+공격 종료 시점 $T_{\mathrm{end}}$ 이후, 목적 함수 $\Xi(t)$가 $\Xi_{\mathrm{crit}}$를 초과하여 안정적으로 유지되는 최소 시간 $\Delta T_{\mathrm{safe}}$를 복원 완료 시간으로 정의합니다.
+$$
+T_{\mathrm{rec}} = \min \{ t > T_{\mathrm{end}} \mid \forall t' \in [t, t + \Delta T_{\mathrm{safe}}], \Xi(t') \geq \Xi_{\mathrm{crit}} \}
+$$
+
+\subsection{잔존 복원력 ($\mathcal{R}_{\mathrm{res}}$)}
+시스템이 공격에 노출되는 동안 목적 함수 $\Xi(t)$의 손실 면적을 활용하여 잔존 복원력을 정량화합니다.
+$$
+\mathcal{R}_{\mathrm{res}}(t) = 1 - \frac{\int_{T_{\mathrm{start}}}^{T_{\mathrm{end}}} \max(0, \Xi_{\mathrm{crit}} - \Xi(t)) dt}{(T_{\mathrm{end}} - T_{\mathrm{start}}) \cdot \Xi_{\mathrm{crit}}}
+$$
+여기서 $\mathcal{R}_{\mathrm{res}} \in [0, 1]$이며, 1에 가까울수록 공격 기간 동안 손실이 적어 복원력이 높음을 의미합니다.
 
 \end{document}
