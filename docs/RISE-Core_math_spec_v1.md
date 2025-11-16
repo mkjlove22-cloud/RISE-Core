@@ -4,3 +4,5 @@
 
 Phase (P1/P2)
 theta_i(t) ∈ [0, 2π)
+Natural Frequency
+omega_i(t) ∈ R
