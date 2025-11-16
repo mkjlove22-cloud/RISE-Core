@@ -61,7 +61,7 @@ $$
 
 공명 지표 $r(t)$는 표준 Kuramoto order parameter로 정의한다:
 
-$$
+
 r(t)
 =
 \frac{1}{N}
@@ -81,7 +81,7 @@ $$
 
 동조도에 따라 동적 증폭 계수 $\alpha(t)$를 정의한다:
 
-$$
+
 \alpha(t)
 =
 \begin{cases}
