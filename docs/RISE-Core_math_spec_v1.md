@@ -3,16 +3,11 @@
 시간 t = 0,1,2,...,Tmax
 노드 i = 1,…,N 에 대해 다음 상태를 갖는다:
 
-1. Phase (P1/P2)
-   theta_i(t) ∈ [0, 2π)
-2. Natural Frequency
-   omega_i(t) ∈ R
-3. Resource
-   R_i(t) ≥ 0
-4. Emotion / Energy
-   E_i(t) ∈ [-1, 1]
-5. Meaning Weight (P4)
-   W_i(t) ∈ [W_min, W_max],   with 0 < W_min < W_max ≤ 1
+1. Phase (P1/P2) theta_i(t) ∈ [0, 2π)
+2. Natural Frequency omega_i(t) ∈ R
+3. Resource R_i(t) ≥ 0
+4. Emotion / Energy E_i(t) ∈ [-1, 1]
+5. Meaning Weight (P4) W_i(t) ∈ [W_min, W_max],   with 0 < W_min < W_max ≤ 1
 2. Network Structure
 
 Sparse undirected graph: 
@@ -24,10 +19,8 @@ r(t) = | (1/N) * Σ_j exp(i * theta_j(t)) |
 Range: 0 (disordered) → 1 (perfect sync)
 3.2 Gini Coefficient G(t)
 
-Sorted R:
-G(t) = ( Σ_i Σ_j |R_i - R_j| ) / ( 2 * N * Σ_i R_i )
-Definition:
-G(t) = ( Σ_i Σ_j |R_i - R_j| ) / ( 2 * N * Σ_i R_i )
+Sorted R: G(t) = ( Σ_i Σ_j |R_i - R_j| ) / ( 2 * N * Σ_i R_i )
+Definition: G(t) = ( Σ_i Σ_j |R_i - R_j| ) / ( 2 * N * Σ_i R_i )
 3.3 Mean Values
 W_avg(t) = (1/N) * Σ_i W_i(t)
 E_avg(t) = (1/N) * Σ_i E_i(t)
