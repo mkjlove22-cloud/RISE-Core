@@ -30,11 +30,11 @@ $$
 
 목표는 일정 구간 $[T_{\mathrm{rec, start}}, T_{\mathrm{rec, end}}]$에 대해
 
-$$
+
 \overline{\Xi} \;=\; \frac{1}{T_{\mathrm{rec, end}} - T_{\mathrm{rec, start}}}
 \sum_{t = T_{\mathrm{rec, start}}}^{T_{\mathrm{rec, end}}} \Xi(t)
 \;\ge\; 0.40
-$$
+
 
 를 만족하도록 파라미터 및 정책을 설계하는 것이다.
 
@@ -46,14 +46,14 @@ $$
 
 ### 3.1 Kuramoto 기본 식
 
-$$
+
 \frac{d\theta_i}{dt}
 \;=\;
 \omega_i(t)
 \;+\;
 \sum_{j \in \mathcal{N}(i)} K_{ij}(t)\, \sin\bigl(\theta_j(t) - \theta_i(t)\bigr)
 \;+\; \eta_i(t)
-$$
+
 
 - $\mathcal{N}(i)$ : 노드 $i$의 이웃(neighbor) 집합  
 - $K_{ij}(t)$ : 시간에 따라 달라지는 결합 강도 (coupling strength)  
@@ -69,7 +69,7 @@ r(t)
 \sum_{j=1}^{N} e^{\,i\theta_j(t)}
 \right|
 \in [0,1]
-$$
+
 
 ---
 
@@ -88,16 +88,16 @@ alpha(t)
 1, & r(t) \ge r_{\mathrm{crit}} \\
 1 + \mu\, \bigl(r_{\mathrm{crit}} - r(t)\bigr)^{\gamma}, & r(t) < r_{\mathrm{crit}}
 \end{cases}
-$$
+
 
 - $\mu > 0$ : 증폭 강도
 - $\gamma \ge 1$ : 비선형 정도
 
 실제 결합 강도는
 
-$$
+
 K_{ij}(t) = \alpha(t)\, K_{ij}^{(0)}\, F_j(t)
-$$
+
 
 처럼 증폭된다. 여기서 $K_{ij}^{(0)}$는 기본 결합 행렬, $F_j(t)$는 P4 필터(아래 참조).
 
@@ -115,7 +115,7 @@ G(t)
 }{
 2N \sum_{k=1}^{N} R_k(t)
 }
-$$
+
 
 로 정의한다.
 
@@ -127,7 +127,7 @@ $G(t) > G_{\mathrm{th}}$인 경우, 상/하위 $\rho_{\mathrm{redis}}$ 비율의
 
 각 노드 또는 개념 단위의 의미 가중치 $W_{c,i}(t)$는 다음과 같이 진화한다:
 
-$$
+
 \frac{dW_{c,i}}{dt}
 =
 \eta_W\, r(t)\, \bigl(1 - W_{c,i}(t)\bigr)
@@ -135,7 +135,7 @@ $$
 \nu_W(t)\, \bigl(1 - W_{c,i}(t)\bigr)
 \;+\;
 \lambda_W \bigl(1 - W_{c,i}(t)\bigr)
-$$
+
 
 - $\eta_W$ : 공명 기반 의미 회복 속도
 - $\nu_W(t)$ : 공격(meaning collapse) 강도
@@ -148,6 +148,6 @@ W_c(t)
 =
 \frac{1}{N}
 \sum_{i=1}^{N} W_{c,i}(t)
-$$
+
 
 로 정의한다.
