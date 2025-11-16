@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RISE-Core Simulation v1.0</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
 <body class="bg-slate-100 min-h-screen">
     <!-- HEADER -->
     <div class="flex items-center px-4 py-3 bg-white shadow-md rounded-lg mb-6">
@@ -18,3 +33,46 @@
     </div>
 
     <!-- 여기부터 원래 있던 시뮬레이션 레이아웃 시작 -->
+
+    <!-- ====== HEADER ====== -->
+    <header class="header">
+        <img src="assets/rise_logo.png" alt="RISE Logo" class="rise-logo" />
+        <div class="title-block">
+            <h1>RISE-Core AI Simulator</h1>
+            <p>Human–AI Co-Creation Project · Integral Harmonizer Model</p>
+        </div>
+    </header>
+
+    <!-- ====== MAIN LAYOUT ====== -->
+    <main class="container">
+
+        <!-- CONTROL PANEL -->
+        <section class="panel">
+            <h2>Simulation Control</h2>
+
+            <button id="startBtn" class="btn-primary">Start</button>
+            <button id="resetBtn" class="btn-secondary">Reset</button>
+
+            <div class="param-block">
+                <label>Noise Level</label>
+                <input type="range" id="noiseSlider" min="0" max="1" step="0.01" value="0.05" />
+            </div>
+
+            <div class="param-block">
+                <label>Node Count</label>
+                <input type="range" id="nodeSlider" min="8" max="128" step="1" value="32" />
+            </div>
+        </section>
+
+        <!-- CHART AREA -->
+        <section class="charts">
+            <canvas id="rChart"></canvas>
+            <canvas id="wcChart"></canvas>
+        </section>
+
+    </main>
+
+    <!-- JS -->
+    <script src="rise_core_sim.js"></script>
+</body>
+</html>
