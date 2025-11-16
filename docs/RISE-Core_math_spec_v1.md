@@ -128,13 +128,18 @@ $G(t) > G_{\mathrm{th}}$인 경우, 상/하위 $\rho_{\mathrm{redis}}$ 비율의
 각 노드 또는 개념 단위의 의미 가중치 $W_{c,i}(t)$는 다음과 같이 진화한다:
 
 
+
+$$
 \frac{dW_{c,i}}{dt}
 =
 \eta_W\, r(t)\, \bigl(1 - W_{c,i}(t)\bigr)
 \;-\;
 \nu_W(t)\, \bigl(1 - W_{c,i}(t)\bigr)
 \;+\;
-\lambda_W \bigl(1 - W_{c,i}(t)\bigr)
+\lambda_W\, \bigl(1 - W_{c,i}(t)\bigr)
+$$
+
+
 
 
 - $\eta_W$ : 공명 기반 의미 회복 속도
